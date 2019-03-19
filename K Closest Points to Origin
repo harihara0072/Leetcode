@@ -1,0 +1,25 @@
+import math 
+
+class Solution:
+    def distance(p):
+        return math.sqrt((p[0] - 0)**2 + (p[1] - 0)**2)
+    
+    def kClosest(self, points: 'List[List[int]]', K: 'int') -> 'List[List[int]]':
+        len_list = {}
+        out = []
+        result = []
+        for i in range(0, len(points)):
+            distance = Solution.distance(points[i])
+            if len(out) >= K :
+                if distance >= max(out):
+                    continue
+                elif len(out) <= K:
+                    del result[out.index(max(out))]
+                    out.remove(max(out))              
+                    out.append(distance)
+                    result.append(points[i])
+            else:
+                out.append(distance)
+                result.append(points[i])
+            
+        return (result)
