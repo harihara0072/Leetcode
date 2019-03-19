@@ -1,0 +1,19 @@
+class Solution:
+    def numJewelsInStones(self, J, S):
+        """
+        :type J: str
+        :type S: str
+        :rtype: int
+        """
+        J_list =[]
+        S_list = []
+        for i in J:
+            J_list.append(i)
+        for i in S:
+            S_list.append(i)
+        
+        count = 0
+        for i in J_list:
+            count += S_list.count(i)
+        
+        return (count)
