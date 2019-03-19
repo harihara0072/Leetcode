@@ -1,0 +1,11 @@
+class Solution:
+    def repeatedNTimes(self, A: 'List[int]') -> 'int':
+        set_list = list(set(A))
+        i = 0
+        while (i < len(set_list)):
+            if(A.count(set_list[i]) == len(A)/2):
+                return set_list[i]
+                break
+            else:
+                i +=1
+            
