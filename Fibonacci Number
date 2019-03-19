@@ -1,0 +1,16 @@
+class Solution:
+    
+    def fun(n):
+        if n == 1:
+            return 1
+        elif n == 0:
+            return 0
+        else:
+            a = Solution.fun(n-2)
+            b = Solution.fun(n-1)
+            return a + b
+            
+    def fib(self, N: int) -> int:
+        a = Solution.fun(N)
+        return(a)    
+        
