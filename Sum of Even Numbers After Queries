@@ -1,0 +1,40 @@
+class Solution:
+    def sumEvenAfterQueries(self, A: 'List[int]', queries: 'List[List[int]]') -> 'List[int]':
+        
+        result =[]
+        old = []
+        sum = 0
+        for i in A:
+            old.append(i)
+            if i % 2 == 0:
+                sum += i
+            
+        for q in queries:
+            count = 0
+            A[q[1]] = A[q[1]] + q[0]
+            if (A[q[1]] % 2 == 0):
+                if (old[q[1]] % 2 == 0):
+                    sum = sum - old[q[1]] + A[q[1]]
+                    old[q[1]] = A[q[1]]
+                    result.append(sum)
+                else:
+                    sum = sum + A[q[1]]
+                    old[q[1]] = A[q[1]]
+                    result.append(sum)
+            else:
+                if(old[q[1]] % 2 == 0):
+                    sum = sum - old[q[1]]
+                    old[q[1]] = A[q[1]]
+                    result.append(sum)
+                else:
+                    sum = sum 
+                    old[q[1]] = A[q[1]]
+                    result.append(sum)
+                
+        return(result)       
+                    
+                    
+                                 
+                                 
+                
+               
