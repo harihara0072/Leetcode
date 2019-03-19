@@ -1,0 +1,27 @@
+class Solution:
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        result = []
+        i = left
+        while (i < right +1):
+            s = str(i)
+            nums = list(s)
+            rem = 0
+            if(nums.count('0') > 0):
+                i = i+1
+                continue
+            for j in nums:
+                rem += i%int(j)
+            if(rem == 0):
+                result.append(i)
+                i = i+1
+            else:
+                i = i+1
+        
+        return (result)
+            
+                
