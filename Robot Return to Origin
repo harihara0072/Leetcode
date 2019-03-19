@@ -1,0 +1,18 @@
+class Solution:
+    def judgeCircle(self, moves):
+        """
+        :type moves: str
+        :rtype: bool
+        """
+        moves_list = list(moves)
+        u = moves_list.count('U')
+        d = moves_list.count('D')
+        l = moves_list.count('L')
+        r = moves_list.count('R')
+        
+        if(r-l == 0 and u-d == 0):
+            return True
+        else:
+            return False
+        
+        
