@@ -1,0 +1,20 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        morse_list = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        
+        alphabets = ['a', 'b', 'c','d', 'e', 'f','g', 'h', 'i', 'j','k', 'l', 'm','n', 'o', 'p', 'q','r', 's', 't','u', 'v', 'w', 'x','y', 'z']
+        
+        li = []
+        for i in words:
+            str =""
+            for j in i:
+                temp = alphabets.index(j)
+                str += morse_list[temp]
+            li.append(str)
+        count = len(set(li))
+        print(count)
+        return count
