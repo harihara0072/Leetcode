@@ -1,0 +1,13 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        bin_num = str(bin(num))
+        temp = bin_num.split('b')[1]
+        new = ""
+        for i in temp:
+            if i == "0":
+                new += "1"
+            else:
+                new += "0"
+        bin_new = int(new, 2)
+        return (bin_new)
+            
