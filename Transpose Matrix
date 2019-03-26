@@ -1,0 +1,22 @@
+class Solution:
+    def transpose(self, A: List[List[int]]) -> List[List[int]]:
+        o_rows = len(A)
+        o_col = len(A[0])
+        
+        #creating a empty list of lists that holds the transposed matrix
+        
+        trans_A = [None] * o_col
+        
+        for i in range(len(trans_A)):
+            trans_A[i] = [None] * o_rows
+              
+        #swaping the rows and coloums
+        
+        for i in range(int(o_rows)):
+            for j in range(int(o_col)):
+                trans_A[j][i] = A[i][j]
+        
+        return(trans_A)
+        
+        
+        
