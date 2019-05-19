@@ -1,0 +1,29 @@
+class Solution:
+    def rotatedDigits(self, N: int) -> int:
+        out = 0
+        for i in range(N+1):
+            temp = ""
+            li = ['0', '1', '2', '5', '8', '6', '9']
+            result =  all(elem in li for elem in str(i))
+            if result:
+                for j in str(i):
+                    #print(j)
+                    if j == '0':
+                        temp += '0'
+                    elif j == '8':
+                        temp += '8'
+                    elif j == '1':
+                        temp += '1'
+                    elif j == '2':
+                        temp += '5'
+                    elif j == '5':
+                        temp += '2'
+                    elif j == '6':
+                        temp += '9'
+                    elif j == '9':
+                        temp += '6'
+                if temp != str(i):
+                    #print(temp, str(i))
+                    out += 1
+
+        return out
