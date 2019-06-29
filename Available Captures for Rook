@@ -1,0 +1,40 @@
+class Solution:
+    
+    def countDirection(row, count=0):
+        for i in row:
+            if i == "B":
+                break
+            elif i == "p":
+                count += 1
+                break
+        return count
+    
+    def numRookCaptures(self, board: List[List[str]]) -> int:
+        for i in range(8):
+            if 'R' in board[i]:
+                rock = (i, board[i].index('R'))
+        print(rock)
+        
+        
+        #west 
+        
+        west = board[rock[0]][0:rock[1]]
+        east = board[rock[0]][rock[1]+1:8]
+        
+        north = []
+        
+        for i in range(rock[0]-1, -1, -1):
+            north.append(board[i][rock[1]])
+            
+        south =[]
+        for i in range(rock[0]+ 1, 8):
+            south.append(board[i][rock[1]])
+        
+        out = Solution.countDirection(east)
+        out = Solution.countDirection(west[::-1], out)
+        out = Solution.countDirection(north, out)
+        out = Solution.countDirection(south, out)
+        
+        return (out)
+
+       
