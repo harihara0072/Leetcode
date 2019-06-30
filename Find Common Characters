@@ -1,0 +1,28 @@
+from collections import Counter
+
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        count = []
+        seen = []
+        
+        for char in A[0]:
+            val = []
+            if char in seen:
+                continue
+            seen.append(char)
+            for j in range(0, len(A)):
+                temp = dict(Counter(A[j]))
+                if temp.get(char, 0) == 0:
+                    val.append(0)
+                    break
+                else:
+                    val.append(temp.get(char))
+            
+            if min(val) != 0:
+                for _ in range(min(val)):
+                    count.append(char)
+        
+        return count
+            
+        
+        
