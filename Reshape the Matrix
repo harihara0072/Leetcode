@@ -1,0 +1,29 @@
+class Solution:
+    def matrixReshape(self, nums: List[List[int]], r: int, c: int) -> List[List[int]]:
+        if len(nums) * len(nums[0]) != r * c:
+            return nums
+        
+        out = [[[0] for i in range(c)] for i in range(r)]
+        
+        print(out)
+        old = [0, 0]
+        new = [0, 0]
+        count = 0
+        while count < r * c:
+            out[new[0]][new[1]] = nums[old[0]][old[1]]
+            if new[1] + 1 < c:
+                new[1] = new[1] + 1
+            else:
+                new[0] = new[0] + 1
+                new[1] = 0
+                
+            if old[1]+1 < len(nums[0]):
+                old[1] = old[1] + 1
+            else:
+                old[0] = old[0] + 1
+                old[1] = 0
+            count += 1    
+        return(out)
+        
+
+            
