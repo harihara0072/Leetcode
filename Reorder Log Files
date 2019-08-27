@@ -1,0 +1,20 @@
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        digit = []
+        letter = []
+        result = []
+        for log in logs:
+            temp = log.split()
+            if temp[1].isnumeric():
+                digit.append(log)
+            else:
+                letter.append((temp[0], log.lstrip(temp[0])))
+        
+        sorted_letter = sorted(letter, key=lambda kv: (kv[1], kv[0]))
+
+        for i, j in sorted_letter:
+            result.append(i + j)
+        
+        result.extend(digit)
+        
+        return (result)
