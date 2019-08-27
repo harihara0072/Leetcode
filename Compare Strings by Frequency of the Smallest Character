@@ -1,0 +1,23 @@
+class Solution:
+    def numSmallerByFrequency(self, queries: List[str], words: List[str]) -> List[int]:
+        
+        w_count = []
+        answer = []
+        q_count = []
+        
+        for word in words:
+            w_count.append(word.count(min(word)))
+        
+        
+        for q in queries:
+            q_count.append(q.count(min(q)))
+            
+        
+        for i in q_count:
+            count = 0
+            for j in w_count:
+                if i < j:
+                    count += 1
+            answer.append(count)
+        
+        return answer
