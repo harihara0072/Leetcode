@@ -1,0 +1,15 @@
+class Solution:
+    def customSortString(self, S: str, T: str) -> str:
+        s = list(S)
+        t = list(T)
+        
+        out = ""
+        for i in s:
+            for x in range(t.count(i)):
+                out += i
+                t.remove(i)
+        
+        out += "".join(t)
+        
+        return (out)
+        
