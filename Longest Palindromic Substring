@@ -1,0 +1,22 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        
+        if len(s) == 0:
+            return ""
+        
+        elif s[::-1] == s:
+            return s
+        
+        
+        i = 0
+        s_len = len(s)
+        max_len = len(s) - 1
+        
+        while max_len > 0:
+            for i in range(s_len-max_len + 1):
+                sub_s = s[i:i+max_len]
+                if sub_s == sub_s[::-1]:
+                    return sub_s
+            max_len -= 1
+        
+        
