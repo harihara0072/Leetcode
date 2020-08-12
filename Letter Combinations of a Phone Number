@@ -1,0 +1,26 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if len(digits) == 0:
+            return digits
+        
+        key_maps = {'2': ['a', 'b', 'c'],
+                    '3': ['d', 'e', 'f'],
+                    '4': ['g', 'h', 'i'],
+                    '5': ['j', 'k', 'l'],
+                    '6': ['m', 'n', 'o'],
+                    '7': ['p', 'q', 'r', 's'],
+                    '8': ['t', 'u', 'v'],
+                    '9': ['w', 'x', 'y', 'z']}
+
+        output = key_maps[digits[0]]
+        
+        if len(digits) == 1:
+            return output
+
+        for i in range(1, len(digits)):
+            temp = []
+            for j in output:
+                for k in  key_maps[digits[i]]:
+                    temp.append(j + k)
+            output = temp
+        return output
