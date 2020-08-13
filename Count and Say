@@ -1,0 +1,31 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 0:
+            return 0
+        output = [None] * n
+        
+        output[0] = "1"
+        if n == 1:
+            return "1"
+        
+        output[1] = "11"
+        
+        for i in range (2, n):
+            prev = output[i-1]
+            p1 = 0
+            p2 = 1
+            temp = ""
+            while p2< len(prev):
+                if prev[p2] == prev[p1]:
+                    p2 += 1
+                else:
+                    temp += str(p2-p1)+prev[p1]
+                    p1 = p2
+                    p2 += 1
+            
+            if p1 != p2:
+                temp += str(p2-p1) + prev[p1]
+            output[i] = temp
+        
+        print(output)
+        return output[n-1]
