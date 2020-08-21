@@ -1,0 +1,6 @@
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        print(n)
+        bits = '{:032b}'.format(n)
+        return bits.count('1')
+        
