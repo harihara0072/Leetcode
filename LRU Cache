@@ -1,0 +1,63 @@
+class ListNode:
+    def __init__(self, key, val, prev=None, next=None):
+        self.key = key
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dummy_head = ListNode(0, 0)
+        self.dummy_tail = ListNode(0, 0)
+
+        self.dummy_head.next = self.dummy_tail
+        self.dummy_tail.prev = self.dummy_head
+
+        self.elements = {}
+
+    def get(self, key: int) -> int:
+        if self.elements.get(key):
+            value = self.elements.get(key).val
+            node = self.elements.get(key)
+            self._delete_node(node)
+            self._insert_node(node)
+            #self._bring_node_to_front(self.elements.get(key), value)
+            return value
+        else:
+            return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.elements:
+            node = self.elements[key]
+            self._delete_node(node)
+            new_node = ListNode(key, value)
+            self._insert_node(new_node)
+            self.elements[key] = new_node
+
+        elif len(self.elements) >= self.capacity:
+            node_to_remove = self.dummy_tail.prev
+            self._delete_node(node_to_remove)
+            new_node = ListNode(key, value)
+            self._insert_node(new_node)
+            self.elements.pop(node_to_remove.key)
+            self.elements[key] = new_node
+
+        else:
+            new_node = ListNode(key, value)
+            self._insert_node(new_node)
+            self.elements[key] = new_node
+
+
+    def _delete_node(self, node):
+        node_prev = node.prev
+        node_next = node.next
+        node_prev.next = node_next
+        node_next.prev = node_prev
+
+    def _insert_node(self, node):
+        temp_next = self.dummy_head.next
+        self.dummy_head.next = node
+        node.prev = self.dummy_head
+        node.next = temp_next
+        temp_next.prev = node
