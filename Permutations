@@ -1,0 +1,13 @@
+class Solution:
+    def permute(self, nums):
+        output = []
+        self._generate_permutations(nums, [], output)
+        return output
+
+    def _generate_permutations(self, num_list, seen, output):
+        if len(num_list) == 0:
+            output.append(seen)
+            return
+
+        for i in range(len(num_list)):
+            self._generate_permutations(num_list[:i] + num_list[i+1:], seen + [num_list[i]], output)
