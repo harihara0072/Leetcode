@@ -1,0 +1,15 @@
+class Solution:
+    def subsets(self, nums):
+        output = set()
+        #seen = {}
+        self._generate_subsets(tuple(nums), output)
+        return [list(x) for x in output] + [[]]
+
+    def _generate_subsets(self,nums, output):
+        if not nums:
+            return
+
+        if nums not in output:
+            output.add(nums)
+            for i in range(len(nums)):
+                self._generate_subsets(nums[:i]+nums[i+1:], output)
