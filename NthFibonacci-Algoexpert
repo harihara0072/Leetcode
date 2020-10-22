@@ -1,0 +1,15 @@
+def getNthFib(n):
+    # Write your code here.
+    memo = []
+	memo.append(0)
+	memo.append(1)
+	
+	if n < 1:
+		return -1
+	elif n < 3:
+		return memo[n-1]
+	
+	for i in range (2, n):
+		memo.append(memo[i-2] + memo[i-1])
+	
+	return memo[n-1]
